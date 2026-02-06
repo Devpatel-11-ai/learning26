@@ -17,6 +17,9 @@ class Student(models.Model):
     class Meta:
         db_table = "student" #table name
 
+    def __str__(self):
+        return self.studentName
+
 class Product(models.Model):
     productName = models.CharField(max_length=100)
     productPrice = models.IntegerField()
@@ -28,13 +31,97 @@ class Product(models.Model):
     class Meta:
         db_table = "product"
 
-class Iteams(models.Model):
-    iteamName = models.CharField(max_length=100)
-    iteamPrice = models.IntegerField()
-    iteamDescription = models.TextField()
-    iteamStock = models.PositiveIntegerField()
-    iteamColor = models.CharField(max_length=20,null=True)
-    iteamStatus = models.BooleanField(default=True)
+                 
+class StudentProfile(models.Model):
+    hobbies =(("reading","reading"),("travel","travel"),("music","music"))
+    #studentPrilfe id --> pk create auto...
+    studentId = models.OneToOneField(Student,on_delete=models.CASCADE)
+    studentHobbies = models.CharField(max_length=100,choices=hobbies)
+    studentAddress = models.CharField(max_length=100)
+    studentPhone = models.CharField(max_length=10)
+    studentGender = models.CharField(max_length=10)
+    studentDOB = models.DateField()
+    
+    class Meta:
+        db_table = "studentprofile"
+
+    def __str__(self):
+        return self.studentId.studentName
+
+#cat --> #service
+
+class Category(models.Model):
+    categoryName = models.CharField(max_length=100)
+    categoryDescription = models.TextField()
+    categoryStatus = models.BooleanField(default=True)
+    
+    class Meta:
+        db_table = "category"
+
+    def __str__(self):
+        return self.categoryName    
+
+class Service(models.Model):
+    serviceName = models.CharField(max_length=100)
+    serviceDescription = models.TextField()
+    servicePrice = models.IntegerField()
+    serviceStatus = models.BooleanField(default=True)
+    #after table creation adding new field
+    discount = models.IntegerField(null=True)
+    categoryId = models.ForeignKey(Category,on_delete=models.CASCADE)
+
+    
+    class Meta:
+        db_table = "service"
+
+    def __str__(self):
+        return self.serviceName    
+
+class Booking(models.Model):
+    bookingId = models.AutoField(primary_key=True)
+    bookingDate = models.DateField()
+    bookingTime = models.TimeField()
 
     class Meta:
-        db_table = "iteams"
+        db_table = "booking"
+
+    def __str__(self):
+        return str(self.bookingId)
+
+class Payment(models.Model):
+    paymentId = models.AutoField(primary_key=True)
+    paymentAmount = models.FloatField()
+    paymentDate = models.DateField()
+    paymentMethod = models.CharField(max_length=50)
+    bookingId = models.OneToOneField(Booking,on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "payment"
+
+    def __str__(self):
+        return str(self.paymentId)
+
+
+class Order(models.Model):
+    orderId = models.AutoField(primary_key=True)
+    orderDate = models.DateField()
+    orderTotal = models.FloatField()
+
+    class Meta:
+        db_table = "order"
+
+    def __str__(self):
+        return str(self.orderId)
+
+class Inventory(models.Model):
+    inventoryId = models.AutoField(primary_key=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    lastUpdated = models.DateField()
+
+    class Meta:
+        db_table = "inventory"
+
+    def __str__(self):
+        return str(self.inventoryId)        
+
