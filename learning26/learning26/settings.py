@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'student',
     'SerNest',
+    'employee',
     #'django.contrib.student',
     #'django.contrib.product',
 ]
