@@ -1,4 +1,5 @@
 <h1>CRETAE EMPLOYEEFORM</h1>
+<a href="{% url 'employeeList' %}">BACK TO EMPLOYEE LIST</a>
 <form method="POST">
     {% csrf_token %}
     {{form}}
