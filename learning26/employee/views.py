@@ -115,3 +115,15 @@ def filterEmployee(request):
     print("filter employees = ",employees)
     #return redirect("employeeList")
     return render(request,"employee/employeeList.html",{"employees":employees})
+
+def updateEmployee(request,id):
+    #database existing user... id -->
+    employee = Employee.objects.get(id=id) #select * from employee where id = 1
+    
+    if request.method == "POST":
+        form = EmployeeForm(request.POST,instance=employee)
+        form.save()
+        return redirect("employeeList")
+    else:
+        form = EmployeeForm(instance=employee)    
+        return render(request,"employee/updateEmployee.html",{"form":form})
