@@ -1,6 +1,15 @@
 <h1>EMPLOYEE LIST</h1>
 <a href="{% url 'createEmployeeWithForm'%}">CREATE EMPLOYEE<a/>
-<a href ="{% url 'filterEmployee' %}">FILTER</a>    
+<a href="{% url 'filterEmployee'%}">FILTER<a/>
+<a href="{% url 'sortEmployee' 1 %}">Age Asc</a>
+<a href="{% url 'sortEmployee' 2 %}">Age Desc</a>
+
+{% comment  %} <select onchange="location=this.value;">
+    <option value="">-- Select Order --</option>
+    <option value="{% url 'sortEmployee' 1 %}">Age Ascending</option>
+    <option value="{% url 'sortEmployee' 2 %}">Age Descending</option>
+</select>  {% endcomment %}
+
 <table>
     <thead>
         <tr>
@@ -11,6 +20,7 @@
             <th>Join Date</th>
             <th>Post</th>
             <th>Actions</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -23,9 +33,10 @@
             <td>{{emp.join_date}}</td>
             <td>{{emp.post}}</td>
             <td>
-                {% comment %} <a href="{% url 'deleteEmployee' %}">DELETE</a> {% endcomment %}
-                 <a href = "{% url 'deleteEmployee' emp.id %}">DELETE</a>
-                 <a href="{% url 'updateEmployee' emp.id %}">update</a>
+                <a href = "{% url 'deleteEmployee' emp.id %}">DELETE</a>
+            </td>
+            <td>
+                <a href = "{% url 'updateEmployee' emp.id %}">UPDATE</a>
             </td>
         </tr>
         {% endfor %}

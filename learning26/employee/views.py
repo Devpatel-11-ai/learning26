@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
 from .models import Employee
-from .forms import EmployeeForm,CourseForm
+from .forms import EmployeeForm,CourseForm,DepartmentForm
 
 
 # Create your views here.
@@ -51,7 +51,7 @@ def employeeFilter(request):
     employee16 = Employee.objects.order_by("age").values()     #asc
     employee17 = Employee.objects.order_by("-age").values()    #desc
 
-    employee18 = Employee.objects.order_by("-salary").values()    #desc
+    
 
     
 
@@ -100,6 +100,16 @@ def createCourse(request):
         form = CourseForm()
         return render(request,"employee/createCourse.html",{"form":form})  
 
+def DepartmentWithForm(request):
+    if request.method == "POST":
+        form = DepartmentForm(request.POST) #csrftoken,form alll fileds data
+        form.save() #create.. insert into table 
+        return HttpResponse("DEPARTMENT CREATED...")
+    else:
+        form = DepartmentForm()
+        return render(request,"employee/DepartmentForm.html",{"form":form})   
+
+
 def deleteEmployee(request,id):
     #delete from employees where id = 1
     print("id from url = ",id)
@@ -115,6 +125,18 @@ def filterEmployee(request):
     print("filter employees = ",employees)
     #return redirect("employeeList")
     return render(request,"employee/employeeList.html",{"employees":employees})
+
+def sortEmployee(request,id):
+    if id == 1:
+        print("Employee age in ASC Order")
+        employees = Employee.objects.order_by("age").values()
+    elif id == 2:
+        print("Employee age in DESC Order")
+        employees = Employee.objects.order_by("-age").values()
+    else:
+        print("Select 1 for ASC order\n Select 2 for DESC order " )
+    return render(request,'employee/employeeList.html',{'employees': employees})
+
 
 def updateEmployee(request,id):
     #database existing user... id -->

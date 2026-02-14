@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'student',
     'SerNest',
     'employee',
+    'services',
     #'django.contrib.student',
     #'django.contrib.product',
 ]
