@@ -1,3 +1,4 @@
+{% extends 'base.html' %} {% block content %}
 <h1>CRETAE EMPLOYEEFORM</h1>
 <a href="{% url 'employeeList' %}">BACK TO EMPLOYEE LIST</a>
 <form method="POST">
@@ -5,3 +6,4 @@
     {{form}}
     <input type="submit" value="Submit">
 </form>
+{% endblock content %}
