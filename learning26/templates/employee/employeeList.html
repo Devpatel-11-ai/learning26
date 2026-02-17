@@ -1,49 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>EMPLOYEE LIST</h1>
-<a href="{% url 'createEmployeeWithForm'%}">CREATE EMPLOYEE<a/>
-<a href="{% url 'filterEmployee'%}">FILTER<a/>
-<a href="{% url 'sortEmployee' 1 %}">Age Asc</a>
-<a href="{% url 'sortEmployee' 2 %}">Age Desc</a>
 
-{% comment  %} <select onchange="location=this.value;">
-    <option value="">-- Select Order --</option>
-    <option value="{% url 'sortEmployee' 1 %}">Age Ascending</option>
-    <option value="{% url 'sortEmployee' 2 %}">Age Descending</option>
-</select>  {% endcomment %}
+<div class="employee-container">
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Salary</th>
-            <th>Join Date</th>
-            <th>Post</th>
-            <th>Actions</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for emp in employees  %}
-        <tr>
-            <td>{{emp.id}}</td>
-            <td>{{emp.name}}</td>
-            <td>{{emp.age}}</td>
-            <td>{{emp.salary}}</td>
-            <td>{{emp.join_date}}</td>
-            <td>{{emp.post}}</td>
-            <td>
-                {% comment %} <a href="{% url 'deleteEmployee' %}">DELETE</a> {% endcomment %}
-                
-                 <a href = "{% url 'deleteEmployee' emp.id %}">DELETE</a>
-            </td>
-            <td>
-                 <a href="{% url 'updateEmployee' emp.id %}">update</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endblock content %}
+    <!-- Title Section -->
+    <div class="employee-header">
+        <h1 class="   employee-title   ">  Employee List </h1>
+        <div class="filter-btn"
+              style="cursor:pointer;"
+             onclick="document.getElementById('filter-section').classList.toggle('show')">
+             &#9776; Filter
+             </div>
+
+            <!-- &#9776; Filter -->
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrapper">
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Salary</th>
+                    <th>Join Date</th>
+                    <th>Post</th>
+                    <th>Actions</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in employees %}
+                <tr>
+                    <td>{{ emp.id }}</td>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.age }}</td>
+                    <td>{{ emp.salary }}</td>
+                    <td>{{ emp.join_date }}</td>
+                    <td>{{ emp.post }}</td>
+                    <td>
+                        <a href="{% url 'deleteEmployee' emp.id %}" class="delete-btn">DELETE</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'updateEmployee' emp.id %}" class="update-btn">UPDATE</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- FILTER SECTION -->
+    
+     <div id="filter-section" class="filter-section" >
+         <a href="?sort=age_asc">Age Ascending</a>
+         <a href="?sort=age_desc">Age Descending</a>
+         <a href="?sort=salary_asc">Salary Ascending</a>
+         <a href="?sort=salary_desc">Salary Descending</a>
+         </div>
+     </div>
+
+</div>
+
+{% endblock %}

@@ -11,7 +11,28 @@ def employeeList(request):
     print(employees)
     return render(request, 'employee/employeeList.html',{"employees":employees})
 
+def employeeList(request):
+    sort = request.GET.get('sort')
+    employees = Employee.objects.all()
+
+    if sort == 'age_asc':
+        employees = employees.order_by('age')
+    elif sort == 'age_desc':
+        employees = employees.order_by('-age')
+    elif sort == 'salary_asc':
+        employees = employees.order_by('salary')
+    elif sort == 'salary_desc':
+        employees = employees.order_by('-salary')
+
+    return render(request, 'employee/employeeList.html', {'employees': employees})
+
+
+# def employeeList(request):
+    
+   
 def employeeFilter(request):
+
+
     #where select  from employee where name = "raj"
     employee = Employee.objects.filter(name ="raj").values()
     #selet  from employee where post = "Developer"
@@ -149,3 +170,5 @@ def updateEmployee(request,id):
     else:
         form = EmployeeForm(instance=employee)    
         return render(request,"employee/updateEmployee.html",{"form":form})
+
+

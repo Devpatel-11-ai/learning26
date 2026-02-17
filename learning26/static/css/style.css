@@ -1,3 +1,6 @@
+/* =========================
+   GLOBAL
+========================= */
 * {
     margin: 0;
     padding: 0;
@@ -5,74 +8,246 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.navbar {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    gap: 20px;
+body {
+    background: #f2f2f2;
 }
 
-.logo a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
+/* =========================
+   NAVBAR (Gradient)
+========================= */
+.gradient-navbar {
+    background: linear-gradient(90deg, #000000, #3533cd);
+    padding: 20px;
+    border-radius: 40px;
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
 }
 
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 320px ;
 }
 
 .nav-links a {
+    color: white;
     text-decoration: none;
-    color: #fff;
     font-size: 20px;
     font-weight: bold;
 }
 
-.content {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    padding: 20px;
+/* =========================
+   FILTER DROPDOWN
+========================= */
+
+.filter-section {
+    display: none;
+    position: absolute;
+    right: 100px;
+    background: white;
+    padding: 15px;
     border-radius: 10px;
-    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.content table {
+.filter-section a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 8px 0;
+}
+
+.filter-section a:hover {
+    color: #3533cd;
+    font-weight: bold;
+}
+
+.filter-section.show {
+    display: block;
+}
+
+/* =========================
+   EMPLOYEE CONTAINER
+========================= */
+.employee-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+/* =========================
+   CREATE EMPLOYEE CENTER
+========================= */
+
+.create-employee-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* Horizontal center */
+    margin-top: 60px;
+}
+
+.create-employee-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+/* =========================
+   HEADER SECTION
+========================= */
+.employee-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.employee-title {
+    font-size: 42px;
+    font-weight: bold;
+    background: white;
+    padding: 15px 40px;
+    border-radius: 20px;
+    border: 3px solid #000;
+}
+
+.filter-btn {
+    font-size: 20px;
+    font-weight: 600;
+ 
+}
+
+/* =========================
+   TABLE DESIGN
+========================= */
+.table-wrapper {
+    margin-top: 20px;
+}
+
+.employee-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    border: 4px solid #000000;
 }
 
-.content table th,
-.content table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
+.employee-table th {
+    background: linear-gradient(90deg, #000000, #737373);
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+    border: 2px solid #000;
 }
 
-.content table th {
-    background-color: #f2f2f2;
-}
-
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+.employee-table td {
+    padding: 25px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    gap: 20px;
+    border: 2px solid #000;
+    font-size: 18px;
+}
+
+.employee-table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.delete-btn {
+    color: #3533cd;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.update-btn {
+    color: #3533cd;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    margin-top: 60px;
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+
+/* =========================
+   FILTER DROPDOWN
+========================= */
+
+/* 
+.filter-section {
+    display: none;
+    position: absolute;
+    right: 100px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.filter-section a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 8px 0;
+}
+
+.filter-section a:hover {
+    color: #3533cd;
+    font-weight: bold;
+}
+
+.filter-section.show {
+    display: block;
+} */
+
+/* =========================
+   FILTER DROPDOWN FIX
+========================= */
+
+.filter-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-btn {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filter-section {
+    display: none;
+    position: absolute;
+    top: 35px;       /* below button */
+    left: 0;         /* align left side */
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    min-width: 170px;
+    z-index: 1000;
+}
+
+.filter-section a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 6px 0;
+}
+
+.filter-section a:hover {
+    color: #3533cd;
+    font-weight: bold;
+}
+
+.filter-section.show {
+    display: block;
 }

@@ -1,9 +1,12 @@
 {% extends 'base.html' %} {% block content %}
-<h1>CRETAE EMPLOYEEFORM</h1>
+<div class="create-employee-wrapper">
+<h1>CREATE EMPLOYEE FORM</h1>
+
 <a href="{% url 'employeeList' %}">BACK TO EMPLOYEE LIST</a>
 <form method="POST">
     {% csrf_token %}
     {{form}}
     <input type="submit" value="Submit">
 </form>
+</div>
 {% endblock content %}
