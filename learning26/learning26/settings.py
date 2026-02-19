@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'SerNest',
     'employee',
     'services',
+    'crispy_forms',
+    'crispy_bootstrap5',
     #'django.contrib.student',
     #'django.contrib.product',
 ]
@@ -128,3 +130,5 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
