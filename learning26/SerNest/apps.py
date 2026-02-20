@@ -1,5 +1,5 @@
-# from django.apps import AppConfig
+from django.apps import AppConfig
 
 
-# class SernestConfig(AppConfig):
-#     name = 'SerNest'
+class SernestConfig(AppConfig):
+    name = 'SerNest'
