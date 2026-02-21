@@ -1,0 +1,40 @@
+{% url 'employee:employee_dashboard' %}
+{% load static %}
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>Employee</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'employee/css/employee.css' %}">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Employee Dashboard{% endblock %}</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="employee-navbar">
+        <a href="{% url 'employee:employee_dashboard' %}" class="employee-logo">Employee Dashboard</a>
+        <ul class="employee-nav-links">
+            <li><a href="{% url 'employee:employee_dashboard' %}" {% if request.resolver_match.url_name == 'employee_dashboard' %}class="active"{% endif %}>Dashboard</a></li>
+            <li><a href="{% url 'employee:employee_profile' %}" {% if request.resolver_match.url_name == 'employee_profile' %}class="active"{% endif %}>Profile</a></li>
+            <li><a href="{% url 'employee:employee_jobs' %}" {% if request.resolver_match.url_name == 'employee_jobs' %}class="active"{% endif %}>My Jobs</a></li>
+            <li><a href="{% url 'employee:employee_schedule' %}" {% if request.resolver_match.url_name == 'employee_schedule' %}class="active"{% endif %}>Schedule</a></li>
+            <li><a href="{% url 'employee:employee_logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="employee-main-content">
+        {% block content %}
+        <!-- Employee-specific content will go here -->
+        {% endblock %}
+    </main>
+
+    <footer class="employee-footer">
+        &copy; {{ current_year }} SerNest. All rights reserved.
+    </footer>   
+</body>
+</html>

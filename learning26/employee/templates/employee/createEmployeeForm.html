@@ -1,8 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% url 'employee:employeeList' %}
+{% block content %}
 <div class="create-employee-wrapper">
 <h1>CREATE EMPLOYEE FORM</h1>
 
-<a href="{% url 'employeeList' %}">BACK TO EMPLOYEE LIST</a>
+<a href="{% url 'employee:employeeList' %}">BACK TO EMPLOYEE LIST</a>
 <form method="POST">
     {% csrf_token %}
     {{form}}

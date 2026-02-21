@@ -1,0 +1,133 @@
+
+/* =========================
+   GLOBAL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+/* =========================
+   NAVBAR (Gradient)
+========================= */
+.gradient-navbar {
+    background: linear-gradient(90deg, #000000, #3533cd);
+    padding: 20px;
+    border-radius: 40px;
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 60px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* =========================
+   EMPLOYEE CONTAINER
+========================= */
+.employee-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+/* =========================
+   HEADER SECTION
+========================= */
+.employee-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.employee-title {
+    font-size: 42px;
+    font-weight: bold;
+    background: white;
+    padding: 15px 40px;
+    border-radius: 20px;
+    border: 3px solid #000;
+}
+
+.filter-btn {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* =========================
+   TABLE DESIGN
+========================= */
+.table-wrapper {
+    margin-top: 20px;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 4px solid #000000;
+}
+
+.employee-table th {
+    background: linear-gradient(90deg, #000000, #737373);
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+    border: 2px solid #000;
+}
+
+.employee-table td {
+    padding: 25px;
+    text-align: center;
+    border: 2px solid #000;
+    font-size: 18px;
+}
+
+.employee-table tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.delete-btn {
+    color: #3533cd;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.update-btn {
+    color: #3533cd;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    margin-top: 60px;
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+
+

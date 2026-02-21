@@ -1,0 +1,10 @@
+{% load static %}
+
+{% extends 'employee/base.html' %}
+{% block content %} 
+<div class="home-container">
+    <h1>Welcome to the Employee Management System</h1>
+    <p>Manage your employees efficiently and effectively.</p>
+    <a href="{% url 'employee:employee_dashboard' %}" class="btn">Go to Dashboard</a>
+</div>
+{% endblock content %}

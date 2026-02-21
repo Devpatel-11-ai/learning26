@@ -140,6 +140,7 @@ def deleteEmployee(request,id):
     return redirect("employeeList") #url --> name -->
 
 
+
 def filterEmployee(request):
     print("filter employee called...")
     employees = Employee.objects.filter(age__gte=25).values()
@@ -171,4 +172,17 @@ def updateEmployee(request,id):
         form = EmployeeForm(instance=employee)    
         return render(request,"employee/updateEmployee.html",{"form":form})
 
+def employee_dashboard(request):
+    return render(request, 'employee/dashboard.html')
 
+def employee_profile(request):
+    return render(request, 'employee/profile.html')
+
+def employee_jobs(request):
+    return render(request, 'employee/jobs.html')
+
+def employee_schedule(request):
+    return render(request, 'employee/schedule.html')
+
+def employee_logout(request):
+    return render(request, 'employee/logout.html')

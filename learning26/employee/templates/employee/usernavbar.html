@@ -1,0 +1,12 @@
+{% extends 'employee/base.html' %}
+{% url 'employee:employee_dashboard' %}
+{% load static %}
+
+
+<nav class="gradient-navbar">
+    <div class="nav-links">
+        <a href="{% url 'employee:createEmployeeWithForm' %}">  Create Employee  </a>
+        <a href="{% url 'employee:employeeList' %}">  Employee List  </a>
+        <a href="#">  Contact  </a>
+    </div>
+</nav>
