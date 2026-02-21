@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  ServiceCategory, Service, ServiceProvider, Offer, Booking, Payment, Review, Complaint, Subscription
+from .models import AdminProfile, UserProfile, ServiceCategory, Service, ServiceProvider, Offer, Booking, Payment, Review, Complaint, Subscription
 
 admin.site.register(AdminProfile)
 admin.site.register(UserProfile)

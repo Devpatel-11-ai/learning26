@@ -22,8 +22,7 @@ from django.urls import include
 
 #localhost:8000/test/
 urlpatterns = [
-    path('admin/', admin.site.urls),
-
+   path('admin/', admin.site.urls),
     path("test/",views.test),
     path("about/",views.AboutUs),
     path("contact/",views.contactUs),
@@ -33,10 +32,12 @@ urlpatterns = [
     path("recipe/",views.recipe),
 
     #app level url config
+
     path("student/",include("student.urls")),
     path("employee/",include("employee.urls")),
     path("services/",include("services.urls")),
-    path("core/",include("core.urls"))
+    # path("sernest/",include("SerNest.urls")),
+    path("core/",include("core.urls")),
 ]
 
     

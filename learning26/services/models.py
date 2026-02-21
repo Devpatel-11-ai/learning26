@@ -5,7 +5,7 @@ class service(models.Model):
     name = models.CharField(max_length=100)
     category = models.CharField(max_length=25)
     description = models.CharField()
-    price = models.IntegerField(max_length=10)
+    price = models.IntegerField()
 
     class Meta:
         db_table = 'Services'
